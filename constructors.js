@@ -93,11 +93,18 @@ function Car(make, model, year){
 
 // Code here
 
-// function Movie(name, genre, rating) {
-//   this.name = name;
-//   this.genre = genre;
-//   this.rating = rating;
-// }
+function Movie(name, genre, rating) {
+  this.name = name;
+  this.genre = genre;
+  this.rating = rating;
+}
+
+Movie.prototype.changeRating = function (nums) {
+  // return nums.reduce((a, b) => (a + b)) / nums.length;
+  var avg = (this.rating+nums)/2;
+  this.rating = avg;
+  return this.rating;
+}
 
 
 
@@ -125,6 +132,7 @@ function User (name, age, email, savedPosts) {
 
 User.prototype.addSavedPost = function(id, title, rating) {
   this.savedPosts.push( { id, title, rating})
+}
 
 
 
@@ -136,18 +144,9 @@ User.prototype.addSavedPost = function(id, title, rating) {
 
 // Code here
 
-function User (name, age, email, savedPosts) {
-  this.name = name;
-  this.age = age;
-  this.email = email;
-  this.savedPosts = savedPosts;
-}
-
-User.prototype.addSavedPost = function(id, title, rating) {
-  this.savedPosts.push( { id, title, rating},
 
 User.prototype.removeSavedPost = function(num) {
-  const index = this.savedPosts.findIndex(post => post === num)
+  const index = this.savedPosts.findIndex(post => post.id === num)
   this.savedPosts.splice(index, 1);
 }
 
